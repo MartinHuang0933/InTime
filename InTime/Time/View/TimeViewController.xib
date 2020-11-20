@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TimeViewController" customModule="InTime" customModuleProvider="target">
+            <connections>
+                <outlet property="centerTime" destination="siA-TV-lM8" id="sPx-Xa-Aih"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="55" translatesAutoresizingMaskIntoConstraints="NO" id="siA-TV-lM8">
+                    <rect key="frame" x="57" y="264" width="300" height="132"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="132" id="1uc-KV-8pP"/>
+                        <constraint firstAttribute="width" constant="300" id="7So-Rl-L3l"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="110"/>
+                    <color key="textColor" red="0.8520185596446701" green="0.54750877228067218" blue="0.20299648053416483" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E5z-wh-eIJ">
+                    <rect key="frame" x="19" y="264" width="48" height="132"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="48" id="bO3-9R-F2R"/>
+                        <constraint firstAttribute="height" constant="132" id="kYq-Xg-s7n"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="110"/>
+                    <color key="textColor" red="0.85201855959999995" green="0.54750877229999995" blue="0.20299648049999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="siA-TV-lM8" firstAttribute="leading" secondItem="E5z-wh-eIJ" secondAttribute="trailing" constant="-10" id="3D4-fD-1j5"/>
+                <constraint firstItem="siA-TV-lM8" firstAttribute="centerY" secondItem="E5z-wh-eIJ" secondAttribute="centerY" id="JPQ-ph-hYX"/>
+                <constraint firstItem="siA-TV-lM8" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="220" id="MPl-ft-oRN"/>
+                <constraint firstItem="siA-TV-lM8" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="zSv-9V-klI"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="139" y="137"/>
+        </view>
+    </objects>
+</document>
