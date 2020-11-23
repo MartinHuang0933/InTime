@@ -12,6 +12,8 @@ target 'InTime' do
   pod "ViewAnimator"
   pod "FluentDarkModeKit"
   pod "SwiftDate"
+  pod 'RxSwift', '~> 5.0'
+  pod 'RxCocoa', '~> 5.0'
 
 
   target 'InTimeTests' do

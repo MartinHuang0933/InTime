@@ -6,6 +6,12 @@ PODS:
     - CollectionKit/Core
     - YetAnotherAnimationLibrary (~> 1.4.0)
   - FluentDarkModeKit (0.5.2)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
   - SnapKit (5.0.1)
   - SwiftDate (6.3.0)
   - ViewAnimator (2.7.0)
@@ -15,6 +21,8 @@ DEPENDENCIES:
   - CollectionKit
   - CollectionKit/WobbleAnimator
   - FluentDarkModeKit
+  - RxCocoa (~> 5.0)
+  - RxSwift (~> 5.0)
   - SnapKit
   - SwiftDate
   - ViewAnimator
@@ -23,6 +31,9 @@ SPEC REPOS:
   trunk:
     - CollectionKit
     - FluentDarkModeKit
+    - RxCocoa
+    - RxRelay
+    - RxSwift
     - SnapKit
     - SwiftDate
     - ViewAnimator
@@ -31,11 +42,14 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   CollectionKit: 8f01e7629185bb81072c4aa734d105df5c2d1c8b
   FluentDarkModeKit: 78109bdbfb87c515543c0a52319da017c3843aae
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftDate: ec6c0e173627a3ae6dd1671888a7f175956ebb94
   ViewAnimator: 5af1c6f3b310f012bf081259c43717aa54fbae73
   YetAnotherAnimationLibrary: 7f808b10c2d193dd3e82407e722fa60aa0bdff2d
 
-PODFILE CHECKSUM: 7a12c56c7f4c84c22581dc7d8fbc3f961677d49f
+PODFILE CHECKSUM: 11295362baf4e05b57ab2fe2832390a7108034c9
 
 COCOAPODS: 1.8.4
