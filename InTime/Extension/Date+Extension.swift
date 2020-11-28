@@ -8,80 +8,8 @@
 
 import Foundation
 
-extension Date {
-    
-    /// Returns the amount of years from another date
-    func years(from date: Date) -> Int {
-        return Calendar.current.dateComponents([.year], from: date, to: self).year ?? 0
-    }
-    /// Returns the amount of months from another date
-    func months(from date: Date) -> Int {
-        return Calendar.current.dateComponents([.month], from: date, to: self).month ?? 0
-    }
-    /// Returns the amount of weeks from another date
-    func weeks(from date: Date) -> Int {
-        return Calendar.current.dateComponents([.weekOfMonth], from: date, to: self).weekOfMonth ?? 0
-    }
-    /// Returns the amount of days from another date
-    func days(from date: Date) -> Int {
-        return Calendar.current.dateComponents([.day], from: date, to: self).day ?? 0
-    }
-    /// Returns the amount of hours from another date
-    func hours(from date: Date) -> Int {
-        return Calendar.current.dateComponents([.hour], from: date, to: self).hour ?? 0
-    }
-    /// Returns the amount of minutes from another date
-    func minutes(from date: Date) -> Int {
-        return Calendar.current.dateComponents([.minute], from: date, to: self).minute ?? 0
-    }
-    /// Returns the amount of seconds from another date
-    func seconds(from date: Date) -> Int {
-        return Calendar.current.dateComponents([.second], from: date, to: self).second ?? 0
-    }
-    /// Returns the a custom time interval description from another date
-    func offset(from date: Date) -> String {
-        if years(from: date)   > 0 { return "\(years(from: date))y"   }
-        if months(from: date)  > 0 { return "\(months(from: date))M"  }
-        if weeks(from: date)   > 0 { return "\(weeks(from: date))w"   }
-        if days(from: date)    > 0 { return "\(days(from: date))d"    }
-        if hours(from: date)   > 0 { return "\(hours(from: date))h"   }
-        if minutes(from: date) > 0 { return "\(minutes(from: date))m" }
-        if seconds(from: date) > 0 { return "\(seconds(from: date))s" }
-        return ""
-    }
-    
-    var startOfDay: Date {
-        return Calendar.current.startOfDay(for: self)
-    }
-
-    var startOfMonth: Date {
-
-        let calendar = Calendar(identifier: .gregorian)
-        let components = calendar.dateComponents([.year, .month], from: self)
-
-        return  calendar.date(from: components)!
-    }
-
-    var endOfDay: Date {
-        var components = DateComponents()
-        components.day = 1
-        components.second = -1
-        return Calendar.current.date(byAdding: components, to: startOfDay)!
-    }
-
-    var endOfMonth: Date {
-        var components = DateComponents()
-        components.month = 1
-        components.second = -1
-        return Calendar(identifier: .gregorian).date(byAdding: components, to: startOfMonth)!
-    }
-
-    func isMonday() -> Bool {
-        let calendar = Calendar(identifier: .gregorian)
-        let components = calendar.dateComponents([.weekday], from: self)
-        return components.weekday == 2
-    }
-    
+extension Date
+{
     /**
      將Date轉換為台北時區
      */
@@ -137,29 +65,22 @@ extension Date {
     /**
      取得輸入Date與現在時間相差的時分(返回文字)
      */
-    func compareCurrntTime(start:Date,end:Date) -> (hour:String, minute:String)
+    func compareCurrntTime(start:Date,end:Date) -> (hour:Int, minute:Int , second:Int)
     {
         let nowdate = Date().localDate()
-        var hour : Int!
-        var minute : Int!
+        var hour : Int , minute : Int , second : Int
         
-//        if compareStartDate.hour!<0 || compareStartDate.minute!<0
-//        {
-//            hour = compareStartDate.hour!
-//            minute = abs(compareStartDate.minute!)
-//        }
-//        else
-//        {
-            let compareEndDate = getCalendar().dateComponents([.hour, .minute], from: nowdate, to: end)
-            hour = compareEndDate.hour!
-            minute = compareEndDate.minute! + 1
-            if minute == 60 {
-                hour += 1
-                minute = 0
-            }
-//        }
-        let hourText = String(format: "%02d", hour)
-        let minuteText = String(format: "%02d", minute)
-        return (hour:hourText, minute:minuteText)
+        let compareEndDate = getCalendar().dateComponents([.hour, .minute, .second], from: nowdate, to: end)
+        hour = compareEndDate.hour!
+        minute = compareEndDate.minute! + 1
+        second = compareEndDate.second!
+        
+        if minute == 60 {
+            hour += 1
+            minute = 0
+            second = 0
+        }
+        
+        return (hour:hour, minute:minute, second:second)
     }
 }

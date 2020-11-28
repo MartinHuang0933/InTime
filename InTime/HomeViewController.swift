@@ -21,10 +21,10 @@ class HomeViewController: UIViewController {
     
     func initTabBar(){
         let vc1 = TimeViewController()
-        let vc2 = UIViewController()
+        let vc2 = RxTablePracticeViewController()
         let vc3 = UIViewController()
-        let navigationController = UINavigationController(rootViewController: vc1)
-        let navigationControlle2 = UINavigationController(rootViewController: vc2)
+        let nav = UINavigationController(rootViewController: vc1)
+        let nav2 = UINavigationController(rootViewController: vc2)
         
         let option1 = NSMutableAttributedString(string: "Feed")
         option1.addAttribute(.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: option1.length))
@@ -32,7 +32,7 @@ class HomeViewController: UIViewController {
         let tabBarItem2 = BATabBarItem(image: UIImage(named: "icon2_unselected")!, selectedImage: UIImage(named: "icon2_selected")!, title: option1)
         let tabBarItem3 = BATabBarItem(image: UIImage(named: "icon3_unselected")!, selectedImage: UIImage(named: "icon3_selected")!, title: option1)
 
-        baTabBarController.viewControllers = [navigationController, navigationControlle2, vc3]
+        baTabBarController.viewControllers = [nav, nav2, vc3]
         baTabBarController.tabBarItems = [tabBarItem, tabBarItem2, tabBarItem3]
         baTabBarController.delegate = self
         baTabBarController.tabBarBackgroundColor = #colorLiteral(red: 0.1764705882, green: 0.2274509804, blue: 0.2980392157, alpha: 1)

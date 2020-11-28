@@ -7,19 +7,26 @@
 //
 
 import UIKit
+import SwiftDate
 
 class TimeViewController: UIViewController {
     
     @IBOutlet weak var centerTime: UILabel!
     var timer: Timer?
+    var circleDuration: Double?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        TimeZone.ReferenceType.default = TimeZone(identifier: "Asia/Taipei")!
 
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.view.backgroundColor = #colorLiteral(red: 0.04705882353, green: 0.1176470588, blue: 0.1921568627, alpha: 1)
         
-        let circle = TimerCircleView()
+        refreshTimeText()
+        startTimer()
+        
+        let circle = TimerCircleView(frame: CGRect(), duration: self.circleDuration!)
         view.addSubview(circle);
         circle.snp.makeConstraints { (make) in
             make.left.equalTo(view)
@@ -27,18 +34,18 @@ class TimeViewController: UIViewController {
             make.centerY.equalTo(centerTime)
             make.height.equalTo(400)
         }
-        
-        refreshTimeText()
-        startTimer()
     }
     
     @objc func refreshTimeText()
     {
-        let date = Date();
-        let nowDate = date.date2TaipeiDate(date: date);
-        let nightDate = date.date2TaipeiDate(date: nowDate.endOfDay);
-        let time = Date().compareCurrntTime(start: nowDate, end: nightDate)
-        self.centerTime.text = "\(time.hour):\(time.minute)"
+        let nowDate = Date().localDate()
+        let endOfDay = DateInRegion().dateAt(.endOfDay).date
+        let time = Date().compareCurrntTime(start: nowDate, end: endOfDay)
+        let hourText = String(format: "%02d", time.hour)
+        let minuteText = String(format: "%02d", time.minute)
+        
+        self.centerTime.text = "\(hourText):\(minuteText)"
+        self.circleDuration = Double(time.hour*3600 + time.minute*60 + time.second)
     }
 
     func startTimer()
@@ -61,5 +68,3 @@ class TimeViewController: UIViewController {
         refreshTimeText()
     }
 }
-
-
