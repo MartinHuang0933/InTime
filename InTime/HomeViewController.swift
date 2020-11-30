@@ -36,6 +36,7 @@ class HomeViewController: UIViewController {
         baTabBarController.tabBarItems = [tabBarItem, tabBarItem2, tabBarItem3]
         baTabBarController.delegate = self
         baTabBarController.tabBarBackgroundColor = #colorLiteral(red: 0.1764705882, green: 0.2274509804, blue: 0.2980392157, alpha: 1)
+        baTabBarController.tabBarItemStrokeColor = UIColor.orange
         
         self.view.addSubview(baTabBarController.view)
     }

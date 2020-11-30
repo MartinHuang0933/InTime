@@ -11,6 +11,8 @@ import SwiftDate
 
 class TimeViewController: UIViewController {
     
+    
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var centerTime: UILabel!
     var timer: Timer?
     var circleDuration: Double?

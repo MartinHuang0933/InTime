@@ -24,7 +24,6 @@
 		04093C6E2555002E000822E3 /* BATabBarBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04093C672555002E000822E3 /* BATabBarBadge.swift */; };
 		04093C6F2555002E000822E3 /* UIColor+ColorWithHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04093C682555002E000822E3 /* UIColor+ColorWithHex.swift */; };
 		04093C702555002E000822E3 /* BATabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04093C692555002E000822E3 /* BATabBarController.swift */; };
-		047281BF256523B900D961F3 /* SystemDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047281BE256523B900D961F3 /* SystemDefine.swift */; };
 		0487BB15255801FB00C8CCF7 /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0487BB14255801FB00C8CCF7 /* TimeViewController.swift */; };
 		0487BB18255805B600C8CCF7 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0487BB17255805B600C8CCF7 /* Date+Extension.swift */; };
 		048E9E5425664C020027A290 /* TimerCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E9E5325664C020027A290 /* TimerCircleView.swift */; };
@@ -66,7 +65,6 @@
 		04093C672555002E000822E3 /* BATabBarBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BATabBarBadge.swift; sourceTree = "<group>"; };
 		04093C682555002E000822E3 /* UIColor+ColorWithHex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+ColorWithHex.swift"; sourceTree = "<group>"; };
 		04093C692555002E000822E3 /* BATabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BATabBarController.swift; sourceTree = "<group>"; };
-		047281BE256523B900D961F3 /* SystemDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemDefine.swift; sourceTree = "<group>"; };
 		0487BB14255801FB00C8CCF7 /* TimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
 		0487BB17255805B600C8CCF7 /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		048E9E5325664C020027A290 /* TimerCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCircleView.swift; sourceTree = "<group>"; };
@@ -124,8 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				04C01915256B5F150021535B /* Rx */,
-				047281C02565245300D961F3 /* SupportFile */,
-				0487BB16255805B600C8CCF7 /* Extension */,
+				047281C02565245300D961F3 /* System */,
 				0487BB102557FEBC00C8CCF7 /* Time */,
 				04093C332554FDD8000822E3 /* AppDelegate.swift */,
 				04093C352554FDD8000822E3 /* SceneDelegate.swift */,
@@ -135,7 +132,6 @@
 				04093C412554FDDB000822E3 /* Info.plist */,
 				0428396C2566259600244071 /* TemplateFile */,
 				04093C612555002E000822E3 /* SupportingFile */,
-				04A15D342567C72B0039CADE /* MacroDefine.swift */,
 			);
 			path = InTime;
 			sourceTree = "<group>";
@@ -181,12 +177,21 @@
 			path = TemplateFile;
 			sourceTree = "<group>";
 		};
-		047281C02565245300D961F3 /* SupportFile */ = {
+		044386382574D92600E7F19A /* Define */ = {
 			isa = PBXGroup;
 			children = (
-				047281BE256523B900D961F3 /* SystemDefine.swift */,
+				04A15D342567C72B0039CADE /* MacroDefine.swift */,
 			);
-			path = SupportFile;
+			path = Define;
+			sourceTree = "<group>";
+		};
+		047281C02565245300D961F3 /* System */ = {
+			isa = PBXGroup;
+			children = (
+				044386382574D92600E7F19A /* Define */,
+				0487BB16255805B600C8CCF7 /* Extension */,
+			);
+			path = System;
 			sourceTree = "<group>";
 		};
 		0487BB102557FEBC00C8CCF7 /* Time */ = {
@@ -442,7 +447,6 @@
 				04093C6F2555002E000822E3 /* UIColor+ColorWithHex.swift in Sources */,
 				04C01917256B5F380021535B /* RxTablePracticeViewController.swift in Sources */,
 				04093C5B2554FE4A000822E3 /* HomeViewController.swift in Sources */,
-				047281BF256523B900D961F3 /* SystemDefine.swift in Sources */,
 				04093C702555002E000822E3 /* BATabBarController.swift in Sources */,
 				04093C6C2555002E000822E3 /* BATabBarItem.swift in Sources */,
 				04A15D352567C72C0039CADE /* MacroDefine.swift in Sources */,
