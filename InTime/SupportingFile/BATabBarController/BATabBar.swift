@@ -46,7 +46,6 @@ class BATabBar: UIView {
     //Color of the outline when selected and during animations
     var barItemStrokeColor = UIColor.colorWithHex(0xF23555)
     
-    
     //Width of the outline when selected and during animations
     var barItemLineWidth: CGFloat = 2.0
     

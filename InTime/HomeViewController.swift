@@ -15,14 +15,13 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.initTabBar()
     }
     
     func initTabBar(){
         let vc1 = TimeViewController()
-        let vc2 = RxTablePracticeViewController()
-        let vc3 = UIViewController()
+        let vc2 = SettingViewController()
+        let vc3 = SettingViewController()
         let nav = UINavigationController(rootViewController: vc1)
         let nav2 = UINavigationController(rootViewController: vc2)
         
@@ -36,7 +35,7 @@ class HomeViewController: UIViewController {
         baTabBarController.tabBarItems = [tabBarItem, tabBarItem2, tabBarItem3]
         baTabBarController.delegate = self
         baTabBarController.tabBarBackgroundColor = #colorLiteral(red: 0.1764705882, green: 0.2274509804, blue: 0.2980392157, alpha: 1)
-        baTabBarController.tabBarItemStrokeColor = UIColor.orange
+        baTabBarController.tabBarItemStrokeColor = #colorLiteral(red: 0.9568627451, green: 0.6352941176, blue: 0.3803921569, alpha: 1)
         
         self.view.addSubview(baTabBarController.view)
     }
