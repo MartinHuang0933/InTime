@@ -14,6 +14,7 @@ target 'InTime' do
   pod "SwiftDate"
   pod 'RxSwift', '~> 5.0'
   pod 'RxCocoa', '~> 5.0'
+  pod 'RxDataSources'
 
 
   target 'InTimeTests' do

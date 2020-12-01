@@ -10,7 +10,7 @@ import UIKit
 
 class TimerCircleView: UIView
 {
-    let circleRadius = (Macro_ScreenWidth-30)/2
+    let circleRadius = (Macro_ScreenWidth-50)/2
     var duration : Double = 0.0
     let daySecion : Double = 86400;
     
