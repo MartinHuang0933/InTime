@@ -67,10 +67,9 @@ extension Date
      */
     func compareCurrntTime(start:Date,end:Date) -> (hour:Int, minute:Int , second:Int)
     {
-        let nowdate = Date().localDate()
         var hour : Int , minute : Int , second : Int
         
-        let compareEndDate = getCalendar().dateComponents([.hour, .minute, .second], from: nowdate, to: end)
+        let compareEndDate = getCalendar().dateComponents([.hour, .minute, .second], from: start, to: end)
         hour = compareEndDate.hour!
         minute = compareEndDate.minute! + 1
         second = compareEndDate.second!
@@ -82,5 +81,15 @@ extension Date
         }
         
         return (hour:hour, minute:minute, second:second)
+    }
+    
+    func getFinalDayOfYear() -> Int
+    {
+        let nowYear = self.year
+        if (nowYear % 4) == 0 && (nowYear % 100) != 0 || (nowYear % 400) == 0 {
+            return 366;
+        } else {
+            return 365;
+        }
     }
 }

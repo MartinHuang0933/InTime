@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate
@@ -17,6 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         UINavigationBar.appearance().isTranslucent = false
+        
+        // init Firebase
+        FirebaseApp.configure()
+        
+        Auth.auth().signInAnonymously() { (authResult, error) in 
+            guard let user = authResult?.user else { return }
+            let isAnonymous = user.isAnonymous  // true
+            let uid = user.uid
+        }
         
         return true
     }

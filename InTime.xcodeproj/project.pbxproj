@@ -25,6 +25,7 @@
 		04093C6F2555002E000822E3 /* UIColor+ColorWithHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04093C682555002E000822E3 /* UIColor+ColorWithHex.swift */; };
 		04093C702555002E000822E3 /* BATabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04093C692555002E000822E3 /* BATabBarController.swift */; };
 		0443863B2574DBAC00E7F19A /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443863A2574DBAC00E7F19A /* SettingViewController.swift */; };
+		0453E8882578EB1A005CBC8B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0453E8872578EB1A005CBC8B /* GoogleService-Info.plist */; };
 		0487BB15255801FB00C8CCF7 /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0487BB14255801FB00C8CCF7 /* TimeViewController.swift */; };
 		0487BB18255805B600C8CCF7 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0487BB17255805B600C8CCF7 /* Date+Extension.swift */; };
 		048E9E5425664C020027A290 /* TimerCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E9E5325664C020027A290 /* TimerCircleView.swift */; };
@@ -67,6 +68,7 @@
 		04093C682555002E000822E3 /* UIColor+ColorWithHex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+ColorWithHex.swift"; sourceTree = "<group>"; };
 		04093C692555002E000822E3 /* BATabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BATabBarController.swift; sourceTree = "<group>"; };
 		0443863A2574DBAC00E7F19A /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		0453E8872578EB1A005CBC8B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0487BB14255801FB00C8CCF7 /* TimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
 		0487BB17255805B600C8CCF7 /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		048E9E5325664C020027A290 /* TimerCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCircleView.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 		04093C322554FDD8000822E3 /* InTime */ = {
 			isa = PBXGroup;
 			children = (
+				0453E8862578EB0A005CBC8B /* Google */,
 				04C01915256B5F150021535B /* Rx */,
 				047281C02565245300D961F3 /* System */,
 				0487BB102557FEBC00C8CCF7 /* Time */,
@@ -194,6 +197,14 @@
 				0443863A2574DBAC00E7F19A /* SettingViewController.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		0453E8862578EB0A005CBC8B /* Google */ = {
+			isa = PBXGroup;
+			children = (
+				0453E8872578EB1A005CBC8B /* GoogleService-Info.plist */,
+			);
+			path = Google;
 			sourceTree = "<group>";
 		};
 		047281C02565245300D961F3 /* System */ = {
@@ -341,6 +352,7 @@
 				04093C602554FF23000822E3 /* TimeViewController.xib in Resources */,
 				04093C3B2554FDD8000822E3 /* Main.storyboard in Resources */,
 				04093C5C2554FE4A000822E3 /* HomeViewController.xib in Resources */,
+				0453E8882578EB1A005CBC8B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -605,7 +617,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.MCC.InTime;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MH.InTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -624,7 +636,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.MCC.InTime;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MH.InTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

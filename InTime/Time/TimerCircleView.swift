@@ -29,6 +29,7 @@ class TimerCircleView: UIView
         animation.fromValue = 0
         animation.toValue = 1
         animation.duration = self.duration
+        animation.isRemovedOnCompletion = false
         return animation
     }()
     

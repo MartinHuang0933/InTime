@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="centerTime" destination="siA-TV-lM8" id="sPx-Xa-Aih"/>
                 <outlet property="dateLabel" destination="kvd-tU-Pu9" id="GNg-X4-z1R"/>
+                <outlet property="dayCountLabel" destination="HeZ-hE-PMO" id="R8E-lN-A9k"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

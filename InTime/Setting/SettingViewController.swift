@@ -25,8 +25,8 @@ class SettingViewController: UIViewController {
     }()
     
     lazy var refreshButton : UIButton = {
-        let button = UIButton(frame: CGRect(x: 0,y: 0,width: 100,height: 100))
-        button.backgroundColor = .red
+        let button = UIButton(frame: CGRect(x: 0,y: 0,width: 0,height: 0))
+        button.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
         return button
     }()
     
@@ -45,12 +45,10 @@ extension SettingViewController
     {
         //创建表格视图
         self.tableView = UITableView(frame: self.view.frame, style:.plain)
+        self.tableView.backgroundColor = #colorLiteral(red: 0.04705882353, green: 0.1176470588, blue: 0.1921568627, alpha: 1)
         //创建一个重用的单元格
-        self.tableView.register(UITableViewCell.self,
-                                 forCellReuseIdentifier: "Cell")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.view.addSubview(self.tableView)
-         
-        
         self.view.addSubview(self.refreshButton)
         
         //随机的表格数据
@@ -61,10 +59,14 @@ extension SettingViewController
          
         //创建数据源
         let dataSource = RxTableViewSectionedReloadDataSource
-            <SectionModel<String, Int>>(configureCell: {
+            <SectionModel<String, String>>(configureCell: {
                 (dataSource, tv, indexPath, element) in
                 let cell = tv.dequeueReusableCell(withIdentifier: "Cell")!
-                cell.textLabel?.text = "条目\(indexPath.row)：\(element)"
+                cell.backgroundColor = #colorLiteral(red: 0.09019607843, green: 0.168627451, blue: 0.2470588235, alpha: 1)
+                cell.textLabel?.text = "\(element)"
+                cell.selectionStyle = .none
+                let accessoryView = UIImageView(image: UIImage(named: "assetTableCell"));
+                cell.accessoryView = accessoryView
                 return cell
             })
          
@@ -72,6 +74,12 @@ extension SettingViewController
         randomResult
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+        
+        //3. 绑定 tableView 的事件
+        self.tableView.rx.itemSelected.bind { (indexPath) in
+            print(indexPath)
+        }
+        .disposed(by: disposeBag)
     }
     
     func setupSubviews()
@@ -111,13 +119,14 @@ extension SettingViewController
     }
     
     //获取随机数据
-    func getRandomResult() -> Observable<[SectionModel<String, Int>]> {
+    func getRandomResult() -> Observable<[SectionModel<String, String>]> {
         print("正在请求数据......")
-        let items = (0 ..< 5).map {_ in
-            Int(arc4random())
-        }
-        let observable = Observable.just([SectionModel(model: "Sjkjkjk", items: items)])
-        return observable.delay(2, scheduler: MainScheduler.instance)
+//        let items = (0 ..< 5).map {_ in
+//            Int(arc4random())
+//        }
+        let texts = ["每日起始時間", "關於作者"]
+        let observable = Observable.just([SectionModel(model: "", items: texts)])
+        return observable
     }
 }
 

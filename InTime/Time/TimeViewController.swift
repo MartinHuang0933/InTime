@@ -11,8 +11,8 @@ import SwiftDate
 
 class TimeViewController: UIViewController {
     
-    
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var dayCountLabel: UILabel!
     @IBOutlet weak var centerTime: UILabel!
     var timer: Timer?
     var circleDuration: Double?
@@ -41,13 +41,18 @@ class TimeViewController: UIViewController {
     @objc func refreshTimeText()
     {
         let nowDate = Date().localDate()
-        let endOfDay = DateInRegion().dateAt(.endOfDay).date
+        let endOfDay = nowDate.dateAtEndOf(.day)
         let time = Date().compareCurrntTime(start: nowDate, end: endOfDay)
         let hourText = String(format: "%02d", time.hour)
         let minuteText = String(format: "%02d", time.minute)
-        
         self.centerTime.text = "\(hourText):\(minuteText)"
+        self.dateLabel.text = nowDate.toFormat("yyyy.MM.dd")
         self.circleDuration = Double(time.hour*3600 + time.minute*60 + time.second)
+        
+        let lastDay = nowDate.dateAtEndOf(.year)
+        let diffComponents = Calendar.current.dateComponents([.day], from: nowDate, to: lastDay)
+        let lastDayCount = diffComponents.day
+        self.dayCountLabel.text = "今年倒數第\(lastDayCount!)天"
     }
 
     func startTimer()
