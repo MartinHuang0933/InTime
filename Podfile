@@ -21,6 +21,7 @@ target 'InTime' do
   # https://firebase.google.com/docs/ios/setup#available-pods
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
+  pod 'Alamofire', '~> 5.2'
 
   target 'InTimeTests' do
     inherit! :search_paths

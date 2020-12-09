@@ -10,6 +10,8 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
+import Alamofire
+import Firebase
 
 class SettingViewController: UIViewController {
     
@@ -36,6 +38,58 @@ class SettingViewController: UIViewController {
         self.title = "設定"
         
         setupSubviews2()
+        
+        
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        
+        
+        
+        ref.child("myImage").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            print(snapshot)
+            
+            let str : String = snapshot.value as! String
+            
+            print(str)
+            
+          // Get user value
+          let value = snapshot.value as? NSDictionary
+            
+            print(value)
+            
+//          let username = value?["username"] as? String ?? ""
+
+          // ...
+          }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+        
+//        let url = "https://intime-59888-default-rtdb.firebaseio.com/"
+//
+//        AF.request(url).response { response in
+//            debugPrint(response)
+//        }
+        
+//        request("http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=e6831708-02b4-4ef8-98fa-4b4ce53459d9").responseJSON(completionHandler: { response in
+//                if response.result.isSuccess {
+//                    // convert data to dictionary array
+//                    if let result = response.value as? [String: AnyObject] {
+//                        let dataList: [[String : Any]]? = result["result"]?["results"] as? [[String : Any]]
+//                        for data in dataList! {
+//                            print("locationName: \(data["locationName"]!)") // 所在縣市
+//                            print("parameterName1: \(data["parameterName1"]!)") // 天氣
+//                            print("startTime: \(data["startTime"]!)") // 起始時間
+//                            print("endTime: \(data["endTime"]!)") // 結束時間
+//                            print()
+//                        }
+//                    }
+//                } else {
+//                    print("error: \(response.error)")
+//                }
+//            })
+        
     }
 }
 

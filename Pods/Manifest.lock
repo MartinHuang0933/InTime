@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (5.4.0)
   - CollectionKit (2.4.0):
     - CollectionKit/Core (= 2.4.0)
   - CollectionKit/Core (2.4.0)
@@ -102,6 +103,7 @@ PODS:
   - YetAnotherAnimationLibrary (1.4.0)
 
 DEPENDENCIES:
+  - Alamofire (~> 5.2)
   - CollectionKit
   - CollectionKit/WobbleAnimator
   - Firebase/Analytics
@@ -117,6 +119,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - CollectionKit
     - Differentiator
     - Firebase
@@ -144,6 +147,7 @@ SPEC REPOS:
     - YetAnotherAnimationLibrary
 
 SPEC CHECKSUMS:
+  Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
   CollectionKit: 8f01e7629185bb81072c4aa734d105df5c2d1c8b
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   Firebase: 456eeacc158d8c58586b7871619a81bb9f27d4ae
@@ -170,6 +174,6 @@ SPEC CHECKSUMS:
   ViewAnimator: 5af1c6f3b310f012bf081259c43717aa54fbae73
   YetAnotherAnimationLibrary: 7f808b10c2d193dd3e82407e722fa60aa0bdff2d
 
-PODFILE CHECKSUM: 937d9f0b198f0990765d1d08a01e2df66e24c3bb
+PODFILE CHECKSUM: b6349a31ddacdc61dec250b520a141ca04913312
 
 COCOAPODS: 1.8.4
