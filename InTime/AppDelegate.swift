@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import SwiftDate
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate
@@ -28,6 +29,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate
             let isAnonymous = user.isAnonymous  // true
             let uid = user.uid
         }
+        
+        
+//        let regionNY = Region(calendar: Calendars.gregorian, zone: Zones.europeRome, locale: Locales.chineseTaiwan)
+        
+//        let tz = (components.timeZone ?? Zones.current.toTimezone())
+//        let cal = (components.calendar ?? Calendars.gregorian.toCalendar())
+//        let loc = (cal.locale ?? Locales.current.toLocale())
+        
+//        let regionNY = Region(calendar: Calendars.gregorian, zone: Zones.americaAdak, locale: Locales.englishAmericanSamoa)
+        
+//        SwiftDate.defaultRegion = Region.local
+//        SwiftDate.defaultRegion = regionNY
+        
+//        Date.setDefaultRegion(Date.defaultRegion)
+//        let rome = Region(calendar: Calendars.gregorian, zone: Zones.asiaTaipei, locale: Locales.chineseTaiwan)
+//        SwiftDate.defaultRegion = rome
+        
+//        print(Date().localDate())
+//        print(Date().localDate().dateAtEndOf(.day))
+//        print(Date().localDate().dateAtEndOf(.day).date)
+//        
+//        print("-----")
+//        
+//        print(Date().toISO())
+//        print(Date().dateAtEndOf(.day))
+//        print(Date().dateAtEndOf(.day).date)
+        
+//        print(Date())
+//        print(DateInRegion())
+//        print(DateInRegion().toISO().toDate()!)
+        
+//        let regionNY = Region(calendar: Calendars.gregorian, zone: Zones.asiaTaipei, locale: Locales.chineseTaiwan)
+//        let nowInNY = DateInRegion(Date(),region:regionNY)
+//        print(nowInNY.date)
+        
         
         return true
     }

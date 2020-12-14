@@ -14,24 +14,35 @@ class TimerCircleView: UIView
     var duration : Double = 0.0
     let daySecion : Double = 86400;
     
+    var _startAngle : CGFloat?
+    var startAngle : CGFloat{
+        if(_startAngle == nil) {
+            let scale : CGFloat = CGFloat(86400 - self.duration) / 86400 * 360 - 90
+            let result : CGFloat = CGFloat(scale) * .pi / 180
+            return result
+        }
+        return _startAngle!
+    }
+    
+    var _strokeIt : CABasicAnimation?
+    var strokeIt : CABasicAnimation {
+        if(_strokeIt == nil) {
+            let animation = CABasicAnimation(keyPath: "strokeEnd")
+            animation.fromValue = 0
+            animation.toValue = 1
+            animation.duration = self.duration
+            animation.isRemovedOnCompletion = false
+            return animation
+        }
+        return _strokeIt!
+    }
+    
+    
     lazy var centerPoint : CGPoint = {
         return CGPoint(x: self.frame.size.width/2 , y: self.frame.size.height/2)
     }()
     
-    lazy var startAngle : CGFloat = {
-        let scale : CGFloat = CGFloat(86400 - self.duration) / 86400 * 360 - 90
-        let result : CGFloat = CGFloat(scale) * .pi / 180
-        return result
-    }()
     
-    lazy var strokeIt : CABasicAnimation = {
-        let animation = CABasicAnimation(keyPath: "strokeEnd")
-        animation.fromValue = 0
-        animation.toValue = 1
-        animation.duration = self.duration
-        animation.isRemovedOnCompletion = false
-        return animation
-    }()
     
     lazy var circleBgLayer : CAShapeLayer = {
         let shapeLayer = CAShapeLayer()
@@ -80,6 +91,14 @@ class TimerCircleView: UIView
     
     override func layoutSubviews()
     {
+        updateCircleLayer()
+    }
+    
+    func updateCircleLayer()
+    {
+        _startAngle = nil
+        _strokeIt = nil
+        
         updateCircleBgLayer()
         updateTimeCountBgLayer()
         updateTimeCountLayer()
@@ -110,6 +129,7 @@ class TimerCircleView: UIView
                                            startAngle: self.startAngle,
                                            endAngle: 270.degreesToRadians,
                                            clockwise: true).cgPath
+        timeCountLayer.add(self.strokeIt, forKey: nil)
     }
     
     private func durationConvertToRadians(_duration : Double) -> Double

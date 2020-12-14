@@ -37,65 +37,13 @@ class SettingViewController: UIViewController {
         self.view.backgroundColor = #colorLiteral(red: 0.04705882353, green: 0.1176470588, blue: 0.1921568627, alpha: 1)
         self.title = "設定"
         
-        setupSubviews2()
-        
-        
-        var ref: DatabaseReference!
-        ref = Database.database().reference()
-        
-        
-        
-        ref.child("myImage").observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            print(snapshot)
-            
-            let str : String = snapshot.value as! String
-            
-            print(str)
-            
-          // Get user value
-          let value = snapshot.value as? NSDictionary
-            
-            print(value)
-            
-//          let username = value?["username"] as? String ?? ""
-
-          // ...
-          }) { (error) in
-            print(error.localizedDescription)
-        }
-        
-        
-//        let url = "https://intime-59888-default-rtdb.firebaseio.com/"
-//
-//        AF.request(url).response { response in
-//            debugPrint(response)
-//        }
-        
-//        request("http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=e6831708-02b4-4ef8-98fa-4b4ce53459d9").responseJSON(completionHandler: { response in
-//                if response.result.isSuccess {
-//                    // convert data to dictionary array
-//                    if let result = response.value as? [String: AnyObject] {
-//                        let dataList: [[String : Any]]? = result["result"]?["results"] as? [[String : Any]]
-//                        for data in dataList! {
-//                            print("locationName: \(data["locationName"]!)") // 所在縣市
-//                            print("parameterName1: \(data["parameterName1"]!)") // 天氣
-//                            print("startTime: \(data["startTime"]!)") // 起始時間
-//                            print("endTime: \(data["endTime"]!)") // 結束時間
-//                            print()
-//                        }
-//                    }
-//                } else {
-//                    print("error: \(response.error)")
-//                }
-//            })
-        
+        setupSubviews()
     }
 }
 
 extension SettingViewController
 {
-    func setupSubviews2()
+    func setupSubviews()
     {
         //创建表格视图
         self.tableView = UITableView(frame: self.view.frame, style:.plain)
@@ -117,6 +65,7 @@ extension SettingViewController
                 (dataSource, tv, indexPath, element) in
                 let cell = tv.dequeueReusableCell(withIdentifier: "Cell")!
                 cell.backgroundColor = #colorLiteral(red: 0.09019607843, green: 0.168627451, blue: 0.2470588235, alpha: 1)
+                cell.textLabel?.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
                 cell.textLabel?.text = "\(element)"
                 cell.selectionStyle = .none
                 let accessoryView = UIImageView(image: UIImage(named: "assetTableCell"));
@@ -132,52 +81,15 @@ extension SettingViewController
         //3. 绑定 tableView 的事件
         self.tableView.rx.itemSelected.bind { (indexPath) in
             print(indexPath)
+            
+            let vc = SetStartTimeViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         .disposed(by: disposeBag)
-    }
-    
-    func setupSubviews()
-    {
-        //0. 创建tableView
-        view.addSubview(self.tableView)
-        tableView.snp.makeConstraints { (make) in
-            make.left.right.top.bottom.equalTo(view)
-        }
-        
-        //1. 创建可观察数据源
-        let texts = ["關於作者", "Swift", "RXSwift", "aa"]
-        let textsObservable = Observable.from(optional: texts)
-        
-        //2. 将数据源与 tableView 绑定
-        textsObservable.bind(to: tableView.rx
-                                .items(cellIdentifier: "Cell", cellType: UITableViewCell.self)) { (row, text, cell) in
-            cell.textLabel?.text = text
-            cell.backgroundColor = #colorLiteral(red: 0.09019607843, green: 0.168627451, blue: 0.2470588235, alpha: 1)
-            cell.textLabel?.textColor = UIColor.white
-            cell.selectionStyle = .none
-            cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
-            cell.tintColor = .red
-            let accessoryView = UIImageView(image: UIImage(named: "assetTableCell"));
-            cell.accessoryView = accessoryView
-        }
-        .disposed(by: disposeBag)
-        
-        //3. 绑定 tableView 的事件
-        tableView.rx.itemSelected.bind { (indexPath) in
-            print(indexPath)
-        }
-        .disposed(by: disposeBag)
-        
-        //4. 设置 tableView Delegate/DataSource 的代理方法
-        tableView.rx.setDelegate(self).disposed(by: disposeBag)
     }
     
     //获取随机数据
     func getRandomResult() -> Observable<[SectionModel<String, String>]> {
-        print("正在请求数据......")
-//        let items = (0 ..< 5).map {_ in
-//            Int(arc4random())
-//        }
         let texts = ["每日起始時間", "關於作者"]
         let observable = Observable.just([SectionModel(model: "", items: texts)])
         return observable

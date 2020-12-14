@@ -21,5 +21,6 @@ public let MTColor_Green = #colorLiteral(red: 0.4156862745, green: 0.5647058824,
 public let MTColor_Gary = #colorLiteral(red: 0.376831919, green: 0.3787041605, blue: 0.4784372449, alpha: 1)
 public let MTColor_Btn_Normal = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
 
-// MARK: Notification Name
-public let MT_TIMER_REFRESH = "MT_Notification_Timer_Refresh"
+// MARK: UserDeafalt Key
+//public let MT_UD_START_TIME = "MT_UserDeafalt_StartTime"
+
