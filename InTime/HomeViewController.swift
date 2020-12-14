@@ -26,6 +26,8 @@ class HomeViewController: UIViewController {
         
         let option1 = NSMutableAttributedString(string: "每日倒數")
         option1.addAttribute(.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: option1.length))
+        
+        option1.addAttribute(.font, value: UIFont(name: "Chalkduster", size: 18.0)! , range: NSRange(location: 0, length: option1.length))
         let tabBarItem  = BATabBarItem(image: UIImage(named: "tab_clock_selected")!, selectedImage: UIImage(named: "tab_clock_unselected")!, title: option1)
         
         let option2 = NSMutableAttributedString(string: "設定")
