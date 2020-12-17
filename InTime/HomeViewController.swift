@@ -41,6 +41,9 @@ class HomeViewController: UIViewController {
         baTabBarController.tabBarItemStrokeColor = #colorLiteral(red: 0.9568627451, green: 0.6446316604, blue: 0.1247735781, alpha: 1)
         
         self.view.addSubview(baTabBarController.view)
+        baTabBarController.view.snp.makeConstraints { (make) in
+            make.left.right.top.bottom.equalTo(view)
+        }
     }
 }
 

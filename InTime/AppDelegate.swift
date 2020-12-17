@@ -14,6 +14,8 @@ import SwiftDate
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate
 {
+    var window: UIWindow?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         UINavigationBar.appearance().barTintColor = UIColor(red: 12/255, green: 30/255, blue: 49/255, alpha: 1)
@@ -29,6 +31,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate
             let isAnonymous = user.isAnonymous  // true
             let uid = user.uid
         }
+        
+        if #available(iOS 13, *) {
+            // do only pure app launch stuff, not interface stuff
+        } else {
+            self.window = UIWindow()
+            let vc = HomeViewController()
+            self.window!.rootViewController = vc
+            self.window!.makeKeyAndVisible()
+            self.window!.backgroundColor = .red
+            
+//            let window = UIApplication.shared.windows.first
+//            let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//            let vc : UIViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as UIViewController
+//            window?.makeKeyAndVisible()
+//            window?.rootViewController = vc
+        }
+        return true
+        
         
         
 //        let regionNY = Region(calendar: Calendars.gregorian, zone: Zones.europeRome, locale: Locales.chineseTaiwan)
@@ -65,17 +85,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 //        print(nowInNY.date)
         
         
-        return true
+//        return true
     }
 
     // MARK: UISceneSession Lifecycle
-
+    @available(iOS 13.0, *)
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
         // Use this method to select a configuration to create the new scene with.
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
+    @available(iOS 13.0, *)
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
