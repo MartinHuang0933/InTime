@@ -16,6 +16,7 @@ class TimeViewController: UIViewController {
     @IBOutlet weak var centerTime: UILabel!
     var timer: Timer?
     var circleDuration: Double?
+    var circle :TimerCircleView?
     
     override func viewDidLoad()
     {
@@ -31,9 +32,9 @@ class TimeViewController: UIViewController {
         startTimer()
         
         // 畫時間圖形
-        let circle = TimerCircleView(frame: CGRect(), duration: self.circleDuration!)
-        view.addSubview(circle);
-        circle.snp.makeConstraints { (make) in
+        circle = TimerCircleView(frame: CGRect(), duration: self.circleDuration!)
+        view.addSubview(circle!);
+        circle!.snp.makeConstraints { (make) in
             make.left.equalTo(view)
             make.right.equalTo(view)
             make.centerY.equalTo(centerTime)
@@ -58,8 +59,8 @@ class TimeViewController: UIViewController {
                 }else{
                     daysec = 86400 + diffDate.hour!*3600 + diffDate.minute!*60 + diffDate.second!
                 }
-                circle.duration = Double(daysec!)
-                circle.updateCircleLayer()
+                self.circle?.duration = Double(daysec!)
+                self.circle?.updateCircleLayer()
                 
                 // 更新倒數時間 - 文字
                 self.refreshTimeText()
@@ -129,5 +130,7 @@ class TimeViewController: UIViewController {
         }
         NotificationCenter.default.post(name: .timerRefresh , object: nil, userInfo:nil)
         refreshTimeText()
+        self.circle?.duration = self.circleDuration!
+        self.circle?.updateCircleLayer()
     }
 }
