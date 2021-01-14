@@ -46,8 +46,13 @@ extension SettingViewController
     func setupSubviews()
     {
         //创建表格视图
-        self.tableView = UITableView(frame: self.view.frame, style:.plain)
+        if #available(iOS 13.0, *) {
+            self.tableView = UITableView(frame: self.view.frame, style:.insetGrouped)
+        } else {
+            self.tableView = UITableView(frame: self.view.frame, style:.grouped)
+        }
         self.tableView.backgroundColor = #colorLiteral(red: 0.04705882353, green: 0.1176470588, blue: 0.1921568627, alpha: 1)
+        self.tableView.separatorColor = #colorLiteral(red: 0.1176944152, green: 0.2295543253, blue: 0.34139961, alpha: 1)
         //创建一个重用的单元格
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.view.addSubview(self.tableView)
@@ -80,9 +85,15 @@ extension SettingViewController
         
         //3. 绑定 tableView 的事件
         self.tableView.rx.itemSelected.bind { (indexPath) in
-            print(indexPath)
-            
-            let vc = SetStartTimeViewController()
+            var vc : UIViewController
+            switch (indexPath.section,indexPath.row) {
+            case (0,0):
+                vc = SetStartTimeViewController()
+            case (1,0):
+                vc = AboutMeViewController()
+            default:
+                vc = AboutMeViewController()
+            }
             self.navigationController?.pushViewController(vc, animated: true)
         }
         .disposed(by: disposeBag)
@@ -90,8 +101,9 @@ extension SettingViewController
     
     //获取随机数据
     func getRandomResult() -> Observable<[SectionModel<String, String>]> {
-        let texts = ["每日起始時間", "關於作者"]
-        let observable = Observable.just([SectionModel(model: "", items: texts)])
+        let section1 = ["每日起始時間"]
+        let section2 = ["關於"]
+        let observable = Observable.just([SectionModel(model: "", items: section1),SectionModel(model: "", items: section2)])
         return observable
     }
 }
